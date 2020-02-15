@@ -22,3 +22,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.navbar-item, .navbar-brand{
+  padding-left: 25px;
+  margin-left: 25px;
+
+}
+.header{
+  border-style: solid;
+  margin: 3% 15% 3% 15%;
+}

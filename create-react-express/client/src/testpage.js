@@ -39,15 +39,15 @@ class Search extends Component{
         return(
         <div>
             {this.state.books.length ? (
-               <div>
+               <CardList>
                 {this.state.books.map(volumeInfo => (
                     <div>
-                      <strong>
-                        {volumeInfo.title} by {volumeInfo.authors}
-                      </strong>
+                      <Card title = 
+                        {volumeInfo.title} authors =  {volumeInfo.authors}/>
+                        <button onClick = {() => this.onFormSubmit()} />
                     </div>                 
                 ))}
-              </div>
+              </CardList>
             ) : (
               <h3>No Results to Display</h3>
             )}
