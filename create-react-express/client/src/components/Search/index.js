@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "../../App.css";
-import Nav from "../Nav";
-import Header from "../Header";
 import Card from "../Card";
 import CardList from "../CardList";
 import API from "../../scripts/api";
@@ -10,47 +8,56 @@ import Button from "../Button";
 
 class Search extends Component {
   state = {
-        search: '',
-        books: []
+      search: '',
+      books: [],
+      title: '',
+      authors: '', 
+      synopsis: ''
+       
     }
 
 
-    componentDidMount(){
+  componentDidMount(){
         this.searchBook("Harry potter");
-    }
+        console.log(this.state.books);
+  }
 
-    searchBook(query){
+  searchBook(query){
         API.getBook(query)
            .then(res => this.setState({books: res.data.items}))
            .catch(err => console.log(err))
-    }
+  }
 
-    
-
-    handleInputChange(event){
+  handleInputChange = event =>{
         const {value, name} = event.target;
 
         this.setState({
             [name]:value
         })
-    }
+  }
 
-    onFormSubmit(event){
+  onFormSubmit = event =>{
         event.preventDefault();
-        this.searchBook(this.state.search);
-    }
+        this.searchBook('Harry potter');
+        this.printState(event);
+  }
+
+  printState(event){
+        event.preventDefault();
+        console.log(this.state);
+        console.log(this.state.books[0].volumeInfo.imageLinks.thumbnail);
+  }
   
   render(){
     return( 
       <div>
-      <Button onClick = {() => this.onFormSubmit()} />
+        <Button onClick = {this.onFormSubmit} />
       <div>
           {this.state.books.length ? (
              <CardList>
-              {this.state.books.map(volumeInfo => (
+              {this.state.books.map(book => (
                   <div>
-                    <Card key = {volumeInfo._id} title = {volumeInfo.title} authors =  {volumeInfo.authors}/>
-                    
+                    <Card image = {'https://i.imgflip.com/prj6o.jpg'}title = {book.volumeInfo.title} authors = {book.volumeInfo.authors}/>
                   </div>                  
               ))}
             </CardList>
