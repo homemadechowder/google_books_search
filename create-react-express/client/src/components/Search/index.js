@@ -5,6 +5,7 @@ import Header from "../Header";
 import Card from "../Card";
 import CardList from "../CardList";
 import API from "../../scripts/api";
+import Button from "../Button";
 
 
 class Search extends Component {
@@ -39,20 +40,17 @@ class Search extends Component {
         this.searchBook(this.state.search);
     }
   
-  
-  
   render(){
-    return(
-      
+    return( 
       <div>
+      <Button onClick = {() => this.onFormSubmit()} />
       <div>
           {this.state.books.length ? (
              <CardList>
               {this.state.books.map(volumeInfo => (
                   <div>
-                    <Card title = 
-                      {volumeInfo.title} authors =  {volumeInfo.authors}/>
-                      <button onClick = {() => this.onFormSubmit()} />
+                    <Card key = {volumeInfo._id} title = {volumeInfo.title} authors =  {volumeInfo.authors}/>
+                    
                   </div>                  
               ))}
             </CardList>
