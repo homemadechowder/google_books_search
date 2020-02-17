@@ -20,8 +20,8 @@ function Card({
       <p class="card-text">{(authors) ? authors.map((author) =>(author+" ")) : ""}</p>
     </div>
     <div>
-    <img style={cardStyle} class="card-img-top" src={image} alt="CardImage"></img>
-    <p>{description}</p>
+        <img style={cardStyle} class="card-img-top" src={image} alt="CardImage"></img>
+        <p>{description}</p>
     </div>
   </div>
 }
