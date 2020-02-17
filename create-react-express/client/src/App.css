@@ -27,7 +27,7 @@
   margin-left: 25px;
 
 }
-.header, .search-results, .search-input, .card{
+.header, .search-results, .search-input, .card, .saved-results{
   border-style: solid;
   margin: 3% 5% 3% 5%;
 }
