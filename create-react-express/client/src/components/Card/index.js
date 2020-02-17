@@ -14,7 +14,7 @@ function Card({
     <img style={cardStyle} class="card-img-top" src={image} alt="CardImage"></img>
     <div className="card-body">
       <h5 class="card-title">{title}</h5>
-      <p class="card-text">{authors}</p>
+      <p class="card-text">{(authors) ? authors.map((author) =>(author+" ")) : ""}</p>
     </div>
   </div>
 }
