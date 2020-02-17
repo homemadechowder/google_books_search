@@ -31,13 +31,12 @@ class Saved extends Component {
     return (
       <div className="saved-results">
         <h4 style={{ paddingTop: 5, paddingLeft: 5 }}>Saved Books</h4>
-        {/* <Button onClick={this.onFormSubmit} /> */}
         <div className="card-dis">
           {this.state.books.length ? (
             <CardList>
               {this.state.books.map(book => (
                 <div>
-                  <SavedCard description={book.description} image={book.image} title={book.title} authors={book.authors} />
+                  <SavedCard description={book.description} image={book.image} title={book.title} authors={book.authors} link={book.link} id={book._id}/>
                 </div>
               ))}
             </CardList>
