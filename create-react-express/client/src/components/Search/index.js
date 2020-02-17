@@ -19,14 +19,10 @@ class Search extends Component {
 
     };
   }
-
-
-
   componentDidMount() {
     this.searchBook("Harry potter");
     console.log(this.state.books);
   }
-
   searchBook = (query) => {
     API.getBook(query)
       .then((res) => {
@@ -59,7 +55,7 @@ class Search extends Component {
   render() {
     return (
       <>
-      <SearchInput />
+      <SearchInput cb={this.searchBook}/>
       <div className="search-results">
         <h4 style={{paddingTop: 5, paddingLeft: 5}}>Results</h4>
         {/* <Button onClick={this.onFormSubmit} /> */}
