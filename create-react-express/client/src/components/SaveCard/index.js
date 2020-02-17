@@ -5,7 +5,7 @@ const cardStyle = {
   height: '100px'
 }
 
-function Card({
+function SavedCard({
   image,
   title,
   authors,
@@ -25,4 +25,4 @@ function Card({
     </div>
   </div>
 }
-export default Card;
+export default SavedCard;
