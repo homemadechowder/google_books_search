@@ -4,7 +4,7 @@ import Card from "../Card";
 import CardList from "../CardList";
 import API from "../../scripts/api";
 import Button from "../Button";
-
+import SearchInput from "../SearchInput";
 
 class Search extends Component {
 
@@ -15,18 +15,14 @@ class Search extends Component {
       books: [],
       title: '',
       authors: '',
-      synopsis: ''
+      description: ''
 
     };
   }
-
-
-
   componentDidMount() {
     this.searchBook("Harry potter");
     console.log(this.state.books);
   }
-
   searchBook = (query) => {
     API.getBook(query)
       .then((res) => {
@@ -58,14 +54,17 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <Button onClick={this.onFormSubmit} />
-        <div>
+      <>
+      <SearchInput cb={this.searchBook}/>
+      <div className="search-results">
+        <h4 style={{paddingTop: 5, paddingLeft: 5}}>Results</h4>
+        {/* <Button onClick={this.onFormSubmit} /> */}
+        <div className="card-dis">
           {this.state.books.length ? (
             <CardList>
               {this.state.books.map(book => (
                 <div>
-                  <Card image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png"} title={book.volumeInfo.title} authors={book.volumeInfo.authors} />
+                  <Card link={book.volumeInfo.previewLink} description={book.volumeInfo.description} image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png"} title={book.volumeInfo.title} authors={book.volumeInfo.authors} />
                 </div>
               ))}
             </CardList>
@@ -74,6 +73,7 @@ class Search extends Component {
             )}
         </div>
       </div>
+      </>
     )
   }
 }

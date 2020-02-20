@@ -12,4 +12,13 @@ router
   .put(booksController.update)
   .delete(booksController.remove);
 
+router
+  .route("/books")
+  .post(booksController.create)
+  .get(booksController.findAll);
+
+  router
+  .route("/books/:id")
+  .delete(booksController.remove);
+
 module.exports = router;
