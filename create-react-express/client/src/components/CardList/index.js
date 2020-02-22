@@ -1,10 +1,18 @@
 import React from "react";
 
+const style = {
+}
+
 function CardList({ children }) {
   return (
-    <div className="list-overflow-container">
-      <ul className="list-group">{children}</ul>
-    </div>
+      <div className = 'container'>
+      <div  className="row">
+        <div className = "col-12">
+          {children}
+        </div>
+      </div>
+      </div>
+
   );
 }
 export default CardList;
