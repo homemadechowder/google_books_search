@@ -18,11 +18,7 @@ const cardStyle = {
       transform: "translate(0px, -20px)"
     }
   }
-
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+}
 
 const imgStyle = {
   base:{
@@ -53,9 +49,15 @@ function Card({
             </div>
           </a>
   )
-
- };
-/*  }
+}
+ 
+/*  
+ class Card extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+  };
+  }
   saveBook = (title,authors,description,image,link) =>{
     $.post("/books",
     {
@@ -86,5 +88,5 @@ function Card({
     </div>
   }
 */
-}
+
 export default Radium(Card);

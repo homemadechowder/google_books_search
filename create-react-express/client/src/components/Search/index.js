@@ -29,21 +29,14 @@ class Search extends Component {
       title: '',
       authors: '',
       description: ''
-
+  }
 
 
   componentDidMount(){
         this.searchBook("Harry Potter");
         console.log(this.state.books);
-
-    };
   }
   
-  searchBook = (query) => {
-    API.getBook(query)
-      .then((res) => {
-
-
   searchBook(query){
         API.getBook(query)
            .then(res => 

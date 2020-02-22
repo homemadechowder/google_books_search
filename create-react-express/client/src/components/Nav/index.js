@@ -5,6 +5,7 @@ function Nav() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
         Google Books
+      </a>
       <a className="navbar-item text-light" href="/search">
         Search
       </a>
