@@ -27,7 +27,18 @@
   margin-left: 25px;
 
 }
-.header{
+.header, .search-results, .search-input, .card, .saved-results{
   border-style: solid;
-  margin: 3% 15% 3% 15%;
+  margin: 3% 5% 3% 5%;
+}
+.text{
+  width: 100%;
+}
+.search-button{
+  margin-top: 10px;
+  float: right;
+}
+.card-img-top{
+  float:left;
+  padding: 0 15px 10px 10px;
 }

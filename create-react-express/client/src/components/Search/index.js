@@ -27,16 +27,22 @@ class Search extends Component {
       books: [],
       image: '',  
       title: '',
-      authors: '', 
-      synopsis: ''
-       
-    }
+      authors: '',
+      description: ''
+
 
 
   componentDidMount(){
         this.searchBook("Harry Potter");
         console.log(this.state.books);
+
+    };
   }
+  
+  searchBook = (query) => {
+    API.getBook(query)
+      .then((res) => {
+
 
   searchBook(query){
         API.getBook(query)
@@ -92,7 +98,7 @@ class Search extends Component {
       </div>
       <Footer/>
       </div>
-      )}    
+    )}
 }
 
 

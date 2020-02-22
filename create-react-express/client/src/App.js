@@ -8,8 +8,8 @@ import Search from "./components/Search";
 
 function App() {
   return (
-    
-      <Router>
+
+    <Router>
       <div>
         <Nav />
         <Header />
@@ -20,7 +20,7 @@ function App() {
         </Switch>
       </div>
     </Router>
-   
+
   );
 }
 
