@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React from "react";
+import Radium from "radium";
 import $ from 'jquery';
 
 // const cardStyle = {
@@ -28,6 +29,7 @@ const imgStyle = {
     width: '100%',
     height: '44vh',
     objectFit: 'cover',
+
   }
 }
 
@@ -36,13 +38,29 @@ const textStyle = {
   color: 'gold'
 }
 
-
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
+function Card({
+   link,
+   image,
+   title,
+   authors
+  }) {
+  return (
+          <a href = {link} target="_blank" style = {cardStyle.base} className="card">
+            <img style = {imgStyle.base} className="card-img-top" src={image} alt="CardImage"></img>
+            <div className = "card-body">
+              <h5 style = {textStyle} className = "card-title">{title}</h5>  
+              <p  style = {textStyle} className = "card-text">{authors}</p>
+            </div>
+          </a>
+  )
+}
+ 
+/*  
+ class Card extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+  };
   }
   saveBook = (title,authors,description,image,link) =>{
     $.post("/books",
@@ -91,5 +109,6 @@ class Card extends Component {
       </div>
     </div>
   }
-}
-export default Card;
+*/
+
+export default Radium(Card);
