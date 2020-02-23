@@ -33,5 +33,15 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  checkAndCreate: function(req, res){
+    db.Book
+    .find({title:req.body.title})
+    .then(dbModel => {
+      if(dbModel.length <=0)
+      db.Book.create(req.body).then(dbModel => res.json({status: "successfully saved"}));
+      else res.json({status:"Already exists"});
+    })
+
+  } 
 };

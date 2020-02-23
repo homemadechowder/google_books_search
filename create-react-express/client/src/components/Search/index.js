@@ -5,6 +5,15 @@ import CardList from "../CardList";
 import {Form, Button} from "../Form";
 import {Footer} from "../Footer";
 import API from "../../scripts/api";
+import Button from "../Button";
+import SearchInput from "../SearchInput";
+import Footer from "../Footer";
+
+const background = {
+  backgroundImage: "url('https://i.imgur.com/UP2Hz0a.jpg')",
+  backgroundSize: 'cover',
+  color: 'white'
+}
 
 const background = {
   backgroundImage: "url('https://i.imgur.com/UP2Hz0a.jpg')",
@@ -58,40 +67,32 @@ class Search extends Component {
         this.printState(event);
   }
 
-  printState(event){
-        event.preventDefault();
-        console.log(this.state);
-  }
-  
-  render(){
-    return( 
+  render() {
+    return (
+      <>
       <div style = {background}>
-        <p style = {textStyles}><strong>Searching for: {this.state.searchParams}</strong></p>
-        <Form       
-            name = "searchParams"
-            placeHolder = "Harry Potter"
-            value = {this.state.searchParams}
-            onChange = {this.handleInputChange}
-        />
-        <Button
-            onClick = {this.onFormSubmit}
-        />
-        <div>
+      <SearchInput cb={this.searchBook}/>
+      <div className="search-results">
+        <h4 style={{paddingTop: 5, paddingLeft: 5}}>Results</h4>
+        <div className="card-dis">
           {this.state.books.length ? (
-             <CardList>
-              {this.state.books.map((book, i) => (
-                  <div>
-                    <Card link = {book.volumeInfo.previewLink} image = {book.volumeInfo.imageLinks === undefined ? "https://www.macedonrangeshalls.com.au/wp-content/uploads/2017/10/image-not-found.png": `${book.volumeInfo.imageLinks.thumbnail}`} title = {book.volumeInfo.title} authors = {book.volumeInfo.authors}/>
-                  </div>                  
+            <CardList>
+              {this.state.books.map(book => (
+                <div>
+                  <Card bid={book.id} link={book.volumeInfo.previewLink} description={book.volumeInfo.description} image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png"} title={book.volumeInfo.title} authors={book.volumeInfo.authors} />
+                </div>
               ))}
             </CardList>
           ) : (
             <h3>No Results to Display</h3>
           )}
       </div>
-      <Footer/>
+      <Footer />
       </div>
-    )}
+      </>
+    )
+  }
+
 }
 
 

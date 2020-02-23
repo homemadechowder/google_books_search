@@ -2,6 +2,10 @@ import React from "react";
 import Radium from "radium";
 import $ from 'jquery';
 
+// const cardStyle = {
+//   width: '100px',
+//   height: '100px'
+// }
 const cardStyle = {
   base:{
     backgroundImage: "url('https://i7.pngguru.com/preview/219/171/634/nappa-leather-goatskin-suede-leather.jpg')",
@@ -24,7 +28,8 @@ const imgStyle = {
   base:{
     width: '100%',
     height: '44vh',
-    objectFit: 'cover'
+    objectFit: 'cover',
+
   }
 }
 
@@ -32,7 +37,6 @@ const textStyle = {
   fontFamily: 'Trade Winds',
   color: 'gold'
 }
-
 
 function Card({
    link,
@@ -68,22 +72,40 @@ function Card({
       link: link,
     },
     function(res, err){
+      alert(res.status);
+      console.log(res);
       console.log("saved to db");
     });
   }
+
+  flipCard = (bookid) => {
+    if(document.getElementById('front' + bookid).style.transform.includes("rotateY(180deg)")) {
+        document.getElementById('front' + bookid).style.transform = "rotateY(0deg)";
+        document.getElementById('back' + bookid).style.transform = "rotateY(180deg)";
+        } else {
+            document.getElementById('back' + bookid).style.transform = "rotateY(0deg)";
+            document.getElementById('front' + bookid).style.transform = "rotateY(180deg)";
+            
+    }
+  }
   render() {
 
-    return <div className="card">
+    return <div className="card" style={cardStyle.base}>
+      <div className="card-front" id={'front' + this.props.bid } >
+      <div className="card-image">       
+          <img onClick={()=> {this.flipCard(this.props.bid)}} style = {imgStyle.base} className="card-img-top" src={this.props.image} alt="CardImage"></img>
+        </div>
+        <div className="card-body"  onClick={(ev)=> {if(ev.target.tagName != "BUTTON")this.flipCard(this.props.bid)}}>
+          <h5 style = {textStyle} className="card-title">{this.props.title}</h5>
+          <p style = {textStyle} className="card-text">{(this.props.authors) ? this.props.authors.map((author) => (author + " ")) : ""}</p>
+          <button type="submit" className="search-button btn btn-primary " onClick={()=>{this.saveBook(this.props.title,this.props.authors,this.props.description,this.props.image,this.props.link)}}>Save</button>
+          <button type="submit" className="search-button btn btn-primary mr-3" onClick={()=>{window.location.href=this.props.link}}>View</button>
+          
+        </div>
 
-      <div className="card-body">
-        <h5 class="card-title">{this.props.title}</h5>
-        <button type="submit" className="search-button btn btn-primary " onClick={()=>{this.saveBook(this.props.title,this.props.authors,this.props.description,this.props.image,this.props.link)}}>Save</button>
-        <button type="submit" className="search-button btn btn-primary mr-3" onClick={()=>{window.location.href=this.props.link}}>View</button>
-        <p class="card-text">{(this.props.authors) ? this.props.authors.map((author) => (author + " ")) : ""}</p>
       </div>
-      <div>       
-        <img style={cardStyle} class="card-img-top" src={this.props.image} alt="CardImage"></img>
-        <p>{this.props.description}</p>
+      <div className="card-back" id={'back' + this.props.bid } onClick={()=> {this.flipCard(this.props.bid)}} >
+        <p className="card-description" >{this.props.description}</p>
       </div>
     </div>
   }

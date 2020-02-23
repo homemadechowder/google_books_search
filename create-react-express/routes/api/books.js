@@ -14,7 +14,7 @@ router
 
 router
   .route("/books")
-  .post(booksController.create)
+  .post(booksController.checkAndCreate)
   .get(booksController.findAll);
 
   router
