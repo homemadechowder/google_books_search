@@ -2,8 +2,13 @@ import React from "react";
 
 function CardList({ children }) {
   return (
-    <div className="list-overflow-container">
-      <ul className="list-group">{children}</ul>
+   
+    <div className = 'container'>
+      <div  className="row">
+        <div className = "col-12">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }
