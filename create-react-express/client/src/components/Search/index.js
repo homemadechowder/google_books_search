@@ -3,21 +3,14 @@ import "../../App.css";
 import Card from "../Card";
 import CardList from "../CardList";
 import {Form, Button} from "../Form";
-import {Footer} from "../Footer";
-import API from "../../scripts/api";
-import Button from "../Button";
-import SearchInput from "../SearchInput";
 import Footer from "../Footer";
+import SearchInput from "../SearchInput";
+import API from "../../scripts/api";
 
 const background = {
   backgroundImage: "url('https://i.imgur.com/UP2Hz0a.jpg')",
   backgroundSize: 'cover',
   color: 'white'
-}
-
-const background = {
-  backgroundImage: "url('https://i.imgur.com/UP2Hz0a.jpg')",
-  backgroundSize: 'cover'
 }
 
 const textStyles = {
@@ -69,7 +62,6 @@ class Search extends Component {
 
   render() {
     return (
-      <>
       <div style = {background}>
       <SearchInput cb={this.searchBook}/>
       <div className="search-results">
@@ -89,7 +81,8 @@ class Search extends Component {
       </div>
       <Footer />
       </div>
-      </>
+    </div>
+  
     )
   }
 
