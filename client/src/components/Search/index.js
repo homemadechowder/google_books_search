@@ -65,7 +65,7 @@ class Search extends Component {
       <div style = {background}>
       <SearchInput cb={this.searchBook}/>
       <div className="search-results">
-        <h4 style={{paddingTop: 5, paddingLeft: 5}}>Results</h4>
+        <h4 style={{fontFamily: 'Lato', fontFamily: 'Lato', paddingTop: 5, paddingLeft: 5}}>Results</h4>
         <div className="card-dis">
           {this.state.books.length ? (
             <CardList>

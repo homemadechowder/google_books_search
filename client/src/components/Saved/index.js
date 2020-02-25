@@ -37,7 +37,7 @@ class Saved extends Component {
     return (
       <div style = {background}>
       <div className="saved-results" style = {background}>
-        <h4 style={{ paddingTop: 5, paddingLeft: 5 }}>Saved Books</h4>
+        <h4 style={{ fontFamily: 'Lato',paddingTop: 5, paddingLeft: 5 }}>Saved Books</h4>
         <div className="card-dis">
           {this.state.books.length ? (
             <CardList>

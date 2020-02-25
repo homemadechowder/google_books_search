@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Radium from 'radium';
 import $ from 'jquery';
 
 const cardStyle1 = {
@@ -8,6 +9,7 @@ const cardStyle1 = {
 const cardStyle = {
   base:{
     backgroundImage: "url('https://i7.pngguru.com/preview/219/171/634/nappa-leather-goatskin-suede-leather.jpg')",
+    
     marginTop: '1%',
     marginLeft: '.5%',
     marginRight: '.5%',
@@ -29,9 +31,9 @@ const imgStyle = {
     objectFit: 'cover',
   }
 }
-const textStyle = {
+const textStyle = { 
   fontFamily: 'Trade Winds',
-  color: 'gold'
+  color: 'white'
 }
 class SavedCard extends Component {
   constructor(props) {
@@ -67,10 +69,10 @@ class SavedCard extends Component {
     return <div className="card" style = {cardStyle.base}>
       <div className="card-front" id={'front' + this.props.bid } >
           <div className="card-body" onClick={(ev)=> {if(ev.target.tagName != "BUTTON")this.flipCard(this.props.bid)}}>
-            <h5 class="card-title">{this.props.title}</h5>
-            <p className="card-text">{(this.props.authors) ? this.props.authors.map((author) => (author + " ")) : ""}</p>
-            <button type="submit" className="search-button btn btn-primary " onClick={() => { this.deleteABook(this.props.id, this) }}>Delete</button>
-            <button type="submit" className="search-button btn btn-primary mr-3" onClick={() => { window.location.href = this.props.link }}>View</button>
+            <h5 style = {textStyle} class="card-title">{this.props.title}</h5>
+            <p style = {textStyle} className="card-text">{(this.props.authors) ? this.props.authors.map((author) => (author + " ")) : ""}</p>
+            <button style = {textStyle} type="submit" className="search-button btn btn-primary " onClick={() => { this.deleteABook(this.props.id, this) }}>Delete</button>
+            <button style = {textStyle} type="submit" className="search-button btn btn-primary mr-3" onClick={() => { window.location.href = this.props.link }}>View</button>
           </div>
           <div className="card-image">
             <img onClick={()=> {this.flipCard(this.props.bid)}} style={imgStyle.base} className="card-img-top" src={this.props.image} alt="CardImage"></img>
@@ -82,4 +84,4 @@ class SavedCard extends Component {
     </div>
   }
 }
-export default SavedCard;
+export default Radium(SavedCard);
