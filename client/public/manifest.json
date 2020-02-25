@@ -1,6 +1,6 @@
 {
   "short_name": "React App",
-  "name": "Google Book Search",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favico.ico",

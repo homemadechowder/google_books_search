@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Footer(){
+export function Footer(){
     return (
         <footer className="page-footer font-small blue">
             <div style = {{color: 'white'}} className="footer-copyright text-center py-3">© 2020 Copyright:
@@ -9,5 +9,4 @@ function Footer(){
         </footer>
     )
 }
-
 export default Footer;

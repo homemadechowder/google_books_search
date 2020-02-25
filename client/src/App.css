@@ -28,7 +28,7 @@
   margin-left: 25px;
 
 }
-.header, .search-results, .search-input, .card, .saved-results{
+.header, .search-results, .search-input, .saved-results{
   border-style: solid;
 }
 .text{
@@ -76,6 +76,5 @@
 .card-body {
   cursor: grab;
 }
-
 
 

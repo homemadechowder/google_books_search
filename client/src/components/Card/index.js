@@ -1,5 +1,4 @@
-import React from "react";
-import Radium from "radium";
+import React, {Component} from "react";
 import $ from 'jquery';
 
 // const cardStyle = {
@@ -29,7 +28,6 @@ const imgStyle = {
     width: '100%',
     height: '44vh',
     objectFit: 'cover',
-
   }
 }
 
@@ -38,29 +36,13 @@ const textStyle = {
   color: 'gold'
 }
 
-function Card({
-   link,
-   image,
-   title,
-   authors
-  }) {
-  return (
-          <a href = {link} target="_blank" style = {cardStyle.base} className="card">
-            <img style = {imgStyle.base} className="card-img-top" src={image} alt="CardImage"></img>
-            <div className = "card-body">
-              <h5 style = {textStyle} className = "card-title">{title}</h5>  
-              <p  style = {textStyle} className = "card-text">{authors}</p>
-            </div>
-          </a>
-  )
-}
- 
-/*  
- class Card extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-  };
+
+class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
   }
   saveBook = (title,authors,description,image,link) =>{
     $.post("/books",
@@ -90,7 +72,8 @@ function Card({
   }
   render() {
 
-    return <div className="card" style={cardStyle.base}>
+    return (
+      <div style={cardStyle.base} className="card" >
       <div className="card-front" id={'front' + this.props.bid } >
       <div className="card-image">       
           <img onClick={()=> {this.flipCard(this.props.bid)}} style = {imgStyle.base} className="card-img-top" src={this.props.image} alt="CardImage"></img>
@@ -108,7 +91,7 @@ function Card({
         <p className="card-description" >{this.props.description}</p>
       </div>
     </div>
+    )
   }
-*/
-
-export default Radium(Card);
+}
+export default Card;

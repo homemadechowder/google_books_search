@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "../../App.css";
 import Card from "../Card";
 import CardList from "../CardList";
-import {Form, Button} from "../Form";
-import Footer from "../Footer";
-import SearchInput from "../SearchInput";
 import API from "../../scripts/api";
+import Button from "../Button";
+import SearchInput from "../SearchInput";
+import Footer from "../Footer";
 
 const background = {
   backgroundImage: "url('https://i.imgur.com/UP2Hz0a.jpg')",
@@ -13,55 +13,55 @@ const background = {
   color: 'white'
 }
 
-const textStyles = {
-  textAlign: 'center',
-  fontFamily: 'Merriweather',
-  fontSize: '200%', 
-  height: '120%',
-  color: 'white',
-  backgroundImage: "url('https://image.freepik.com/free-photo/old-wooden-texture-background-vintage_55716-1138.jpg')",
-  border: '5px solid black'
-}
-
 class Search extends Component {
-  state = {
-      searchParams: "",
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
       books: [],
-      image: '',  
       title: '',
       authors: '',
       description: ''
+
+    };
+  }
+  componentDidMount() {
+    this.searchBook("Harry potter");
+    console.log(this.state.books);
+  }
+  searchBook = (query) => {
+    API.getBook(query)
+      .then((res) => {
+
+        this.setState({ books: res.data.items });
+      })
+      .catch(err => console.log(err))
   }
 
+  handleInputChange = event => {
+    const { value, name } = event.target;
 
-  componentDidMount(){
-        this.searchBook("Harry Potter");
-        console.log(this.state.books);
-  }
-  
-  searchBook(query){
-        API.getBook(query)
-           .then(res => 
-            this.setState({books: res.data.items}))
-           .catch(err => console.log(err))
+    this.setState({
+      [name]: value
+    })
   }
 
-  handleInputChange = event =>{
-        
-        const {value, name} = event.target;
-        this.setState({
-            [name]:value
-        })
+  onFormSubmit = event => {
+    event.preventDefault();
+    this.searchBook('Harry potter');
+    this.printState(event);
   }
 
-  onFormSubmit = event =>{
-        event.preventDefault();
-        this.searchBook(this.state.searchParams);
-        this.printState(event);
+  printState(event) {
+    event.preventDefault();
+    console.log(this.state);
+    console.log(this.state.books[0].volumeInfo.imageLinks.thumbnail);
   }
 
   render() {
     return (
+      <>
       <div style = {background}>
       <SearchInput cb={this.searchBook}/>
       <div className="search-results">
@@ -76,16 +76,15 @@ class Search extends Component {
               ))}
             </CardList>
           ) : (
-            <h3>No Results to Display</h3>
-          )}
+              <h3>No Results to Display</h3>
+            )}
+        </div>
       </div>
       <Footer />
       </div>
-    </div>
-  
+      </>
     )
   }
-
 }
 
 
