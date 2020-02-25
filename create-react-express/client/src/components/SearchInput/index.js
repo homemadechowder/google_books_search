@@ -15,7 +15,7 @@ class SearchInput extends Component {
       >
         <h3> Book Search</h3>
         <h6> Book</h6>
-        <input type="text" id="query" className="text" placeholder="Search for a book" />
+        <input type="text" id="query" className="text" placeholder="Search for a book - i.e 'Harry Potter'" />
         <button type="submit" className="search-button btn btn-primary" onClick={()=>{this.props.cb(document.getElementById("query").value)}}>Search</button>
       </div>
     );
