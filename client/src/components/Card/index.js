@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Radium from 'radium';
 import $ from 'jquery';
 
 // const cardStyle = {
@@ -94,4 +95,4 @@ class Card extends Component {
     )
   }
 }
-export default Card;
+export default Radium(Card);
