@@ -18,6 +18,49 @@ We used this opportunity to practice a project flow with react. We setup a githu
 The html/css part of this project we created multiple components and setting up react router so that the webpage correctly displays each item. We linked stylesheets in the index.html file. We haven't dug deep into the scripting part of each component (props) as much as later on, we used placeholders to test
 
 #### Example of Card Design
+Here are two functions defined in class Card:
+```javascript
+ saveBook = (title,authors,description,image,link) =>{
+    $.post("/books",
+    {
+      title: title,
+      authors: authors,
+      description: description,
+      image: image,
+      link: link,
+    },
+    function(res, err){
+      alert(res.status)
+    });
+  }
+```
+As you can see, the above code infers the ajax post to save data into the db, this will be called in the render function as a prop
+
+```javascript
+render() {
+
+    return (
+      <div style={cardStyle.base} className="card" >
+      <div className="card-front" id={'front' + this.props.bid } >
+      <div className="card-image">       
+          <img onClick={()=> {this.flipCard(this.props.bid)}} style = {imgStyle.base} className="card-img-top" src={this.props.image} alt="CardImage"></img>
+        </div>
+        <div className="card-body"  onClick={(ev)=> {if(ev.target.tagName != "BUTTON")this.flipCard(this.props.bid)}}>
+          <h5 style = {textStyle} className="card-title">{this.props.title}</h5>
+          <p style = {textStyle} className="card-text">{(this.props.authors) ? this.props.authors.map((author) => (author + " ")) : ""}</p>
+          <button type="submit" className="search-button btn btn-primary " onClick={()=>{this.saveBook(this.props.title,this.props.authors,this.props.description,this.props.image,this.props.link)}}>Save</button>
+          <button type="submit" className="search-button btn btn-primary mr-3" onClick={()=>{window.open(this.props.link, '_blank')}}>View</button>  
+        </div>
+      </div>
+      <div className="card-back" id={'back' + this.props.bid } onClick={()=> {this.flipCard(this.props.bid)}} >
+        <p className="card-description" >{this.props.description}</p>
+      </div>
+    </div>
+    )
+  }
+```
+We made this component highly modifiable with all the props defined. This is the render function we defined for card. The card component is later called in the Search page where the prop parameters are defined.
+
 
 
 ### API routes/MongoDB setup
