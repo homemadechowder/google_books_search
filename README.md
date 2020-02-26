@@ -1,4 +1,5 @@
 # Google Book Search
+A project done in React that lets you search for a book in the google books database and then lets you save it for later as something similar to a wish list.
 
 ## Demo 
 ![Demo](demo.gif)
