@@ -1,7 +1,7 @@
 # Google Book Search
 
 ## Demo 
-
+![Demo](demo.gif)
 
 ## Tech/Packaged Used:
 [Express](https://expressjs.com/)- Used to setup development server
@@ -17,14 +17,24 @@ We used this opportunity to practice a project flow with react. We setup a githu
 ### React Components
 The html/css part of this project we created multiple components and setting up react router so that the webpage correctly displays each item. We linked stylesheets in the index.html file. We haven't dug deep into the scripting part of each component (props) as much as later on, we used placeholders to test
 
+#### Example of Card Design
+
+
 ### API routes/MongoDB setup
 Setting up db connection, installing dependencies and define api routes that we need. 
 
 ### API script testing with constructors in pages
 Using google books as API we created a script file to import later in one of our components.
 
-## Putting it all together:
-Meshing all the parts together required an adequate amount of communication which we were able to achieve. Merge conflicts are discussed and fixed. We also went deeper into setting props and class functions so that the components are able to display the desired results. We went into polishing the website with in-component css so that it looks more lively than it is bareboned. 
+## How to Start
 
-### 
+```
+git clone <repo>
+
+npm/yarn install 
+
+npm/yarn start
+```
+Feel free to leave any feedbacks to this account at @homemadechowder!
+
 
