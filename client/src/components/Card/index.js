@@ -83,10 +83,8 @@ class Card extends Component {
           <h5 style = {textStyle} className="card-title">{this.props.title}</h5>
           <p style = {textStyle} className="card-text">{(this.props.authors) ? this.props.authors.map((author) => (author + " ")) : ""}</p>
           <button type="submit" className="search-button btn btn-primary " onClick={()=>{this.saveBook(this.props.title,this.props.authors,this.props.description,this.props.image,this.props.link)}}>Save</button>
-          <button type="submit" className="search-button btn btn-primary mr-3" onClick={()=>{window.location.href=this.props.link}}>View</button>
-          
+          <button type="submit" className="search-button btn btn-primary mr-3" onClick={()=>{window.open(this.props.link, '_blank')}}>View</button>  
         </div>
-
       </div>
       <div className="card-back" id={'back' + this.props.bid } onClick={()=> {this.flipCard(this.props.bid)}} >
         <p className="card-description" >{this.props.description}</p>
